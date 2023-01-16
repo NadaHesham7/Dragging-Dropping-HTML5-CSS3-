@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display:flex; justify-content:center; width:100%; height: 600px; align-items: center;">
+        <div ondragover="allowDraggingOver(event)" ondrop="allowDroppingOver(event)"
+            style="width:265px; height:250px;border:solid gray 2px; margin-right: 20px;"></div>
+        <div ondragover="allowDraggingOver(event)" ondrop="allowDroppingOver(event)"
+            style="width:265px; height:250px;border:solid gray 2px">
+            <img id="catto" src="catto.png" ondragstart="allowDragging(event)" draggable="true" width="260">
+        </div>
+    </div>
+
+    <script>
+        function allowDraggingOver(e) {
+            e.preventDefault();
+        }
+        function allowDragging(e) {
+            e.dataTransfer.setData("theImage", e.target.id)
+        }
+        function allowDroppingOver(e) {
+            var thePhoto = e.dataTransfer.getData("theImage");
+            e.target.appendChild(document.getElementById(thePhoto))
+        }
+    </script>
+</body>
+
+</html>
